@@ -4,6 +4,7 @@ CREATE DATABASE IF NOT EXISTS `arome_house`
 
 USE `arome_house`;
 
+<<<<<<< HEAD
 CREATE TABLE IF NOT EXISTS customer_crm (
   user_id INT UNSIGNED PRIMARY KEY,
   notes TEXT NULL,
@@ -13,15 +14,23 @@ CREATE TABLE IF NOT EXISTS customer_crm (
   KEY idx_crm_follow_up(follow_up_date)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+=======
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
 CREATE TABLE IF NOT EXISTS `users` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `email` VARCHAR(150) NOT NULL,
+<<<<<<< HEAD
   `email_verified_at` DATETIME DEFAULT NULL,
   `phone` VARCHAR(30) DEFAULT NULL,
   `phone_verified_at` DATETIME DEFAULT NULL,
   `password` VARCHAR(255) NOT NULL,
   `role` ENUM('user','admin','owner') NOT NULL DEFAULT 'user',
+=======
+  `phone` VARCHAR(30) DEFAULT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `role` ENUM('user','admin') NOT NULL DEFAULT 'user',
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -41,6 +50,7 @@ ON DUPLICATE KEY UPDATE
   `name` = VALUES(`name`),
   `role` = 'admin';
 
+<<<<<<< HEAD
 INSERT INTO `users` (`name`, `email`, `phone`, `password`, `role`)
 VALUES (
   'Pemilik Toko',
@@ -53,6 +63,8 @@ ON DUPLICATE KEY UPDATE
   `name` = VALUES(`name`),
   `role` = 'owner';
 
+=======
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
 CREATE TABLE IF NOT EXISTS `products` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(150) NOT NULL,

@@ -1,5 +1,6 @@
 # Login, registrasi OTP, dan reset password
 
+<<<<<<< HEAD
 Halaman login menggunakan email atau nomor WhatsApp dan password. Nomor dengan awalan 08, +62, atau 62 dikenali. Registrasi memakai verifikasi kode 6 digit yang dikirim ke email (Gmail) atau, sebagai alternatif, ke WhatsApp. Email wajib diisi dan menjadi identitas akun; nomor WhatsApp opsional.
 
 Di localhost tanpa konfigurasi email/WhatsApp, kode OTP dan link reset ditampilkan sebagai data uji pada sesi browser yang meminta. Tidak ada pesan yang dikirim. Mode ini dibatasi ke host localhost/loopback dan koneksi loopback.
@@ -51,3 +52,14 @@ Dokumentasi API: https://docs.fonnte.com/api-send-message/ dan token: https://do
 ## Pengujian lokal
 
 `powershell -NoProfile -ExecutionPolicy Bypass -File tests/auth-flow.ps1` menguji alur registrasi WhatsApp. Pengujian membuat satu akun sementara dan menghapusnya setelah selesai. Untuk menguji pengiriman email sungguhan, isi `config/email.local.php` lalu ulangi langkah di atas; untuk uji tanpa kirim, biarkan `provider` = `local` (default) sehingga kode tampil di halaman saat dijalankan dari localhost.
+=======
+Halaman login menggunakan email atau nomor WhatsApp dan password. Nomor dengan awalan 08, +62, atau 62 dikenali. Registrasi terdiri dari permintaan OTP, verifikasi, dan pengisian profil. Email bersifat opsional setelah nomor WhatsApp diverifikasi.
+
+Di localhost, OTP dan link reset ditampilkan sebagai data uji pada sesi browser yang meminta. Tidak ada pesan WhatsApp atau email yang dikirim. Mode ini dibatasi ke host localhost/loopback dan koneksi loopback.
+
+Pengiriman dari website yang diakses di luar localhost belum diaktifkan. Fungsi `auth_delivery()` di `includes/auth-flow.php` perlu dihubungkan ke layanan WhatsApp dan email yang dipilih. Jangan menampilkan kode OTP atau link reset uji pada situs publik. Setelah integrasi layanan tersedia, sesuaikan pengiriman link reset email yang saat ini khusus pengujian lokal.
+
+OTP berlaku 5 menit dengan maksimal 5 percobaan, permintaan ulang dibatasi 60 detik. Link reset berlaku 15 menit dan hanya bisa dipakai sekali. Password baru menggunakan hash bawaan PHP.
+
+Pengujian lokal: `powershell -NoProfile -ExecutionPolicy Bypass -File tests/auth-flow.ps1`. Pengujian membuat satu akun sementara dan menghapusnya setelah selesai.
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9

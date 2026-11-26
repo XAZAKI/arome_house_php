@@ -16,9 +16,12 @@ ensure_order_schema();
 ensure_erp_schema();
 seed_products_if_empty();
 require_once __DIR__ . '/includes/data.php';
+<<<<<<< HEAD
 require_once __DIR__ . '/includes/erp-compliance.php';
 ensure_compliance_schema();
 $shippingMethods=active_shipping_methods();
+=======
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
 require_once __DIR__ . '/includes/hero-ads.php';
 require_once __DIR__ . '/includes/account-settings.php';
 require_once __DIR__.'/includes/profile-photo.php';
@@ -26,6 +29,7 @@ require_once __DIR__.'/includes/customer-orders.php';
 require_once __DIR__ . '/includes/auth-flow.php';
 require_once __DIR__ . '/includes/cart-ui.php';
 require_once __DIR__ . '/includes/notifications.php';
+<<<<<<< HEAD
 ensure_notification_schema();
 require_once __DIR__.'/includes/product-reviews.php';
 ensure_product_reviews_schema();
@@ -34,6 +38,9 @@ ensure_profit_schema();
 require_once __DIR__ . '/includes/admin-management.php';
 require_once __DIR__.'/includes/crm.php';
 ensure_crm_schema();
+=======
+require_once __DIR__ . '/includes/admin-management.php';
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
 require_once __DIR__ . '/includes/collections.php';
 ensure_collections_schema();
 require_once __DIR__.'/includes/store-promotions.php';
@@ -51,14 +58,21 @@ if (!isset($_SESSION['orders'])) $_SESSION['orders'] = [];
 $page = $_GET['page'] ?? 'home';
 
 $allowedPages = [
+<<<<<<< HEAD
     'home', 'catalog', 'product', 'promo', 'news', 'wishlist', 'awaiting-payment',
     'cart', 'checkout', 'payment', 'delivery', 'tracking', 'register', 'login', 'verify-email',
     'account', 'orders', 'about', 'contact', 'testimonials', 'admin', 'forgot-password', 'reset-password', 'notifications', 'shipping-policy', 'return-refund', 'terms-conditions', 'faqs', 'privacy-policy'
+=======
+    'home', 'catalog', 'product', 'promo', 'news', 'wishlist',
+    'cart', 'checkout', 'payment', 'delivery', 'tracking', 'register', 'login',
+    'account', 'orders', 'about', 'contact', 'admin', 'forgot-password', 'reset-password', 'notifications', 'shipping-policy', 'return-refund', 'terms-conditions', 'faqs', 'privacy-policy'
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
 ];
 
 if (!in_array($page, $allowedPages, true)) {
     $page = 'home';
 }
+<<<<<<< HEAD
 // Aggregate, non-identifying visitor analytics for the ERP dashboard.
 if ($_SERVER['REQUEST_METHOD']==='GET' && $page!=='admin') {
     $visit=db()->prepare('INSERT INTO page_visits(page_name,visited_on) VALUES(?,CURDATE())');
@@ -66,6 +80,10 @@ if ($_SERVER['REQUEST_METHOD']==='GET' && $page!=='admin') {
 }
 // Redirect protected pages before the header template sends any output.
 if (in_array($page, ['checkout', 'account', 'orders', 'tracking', 'notifications', 'awaiting-payment', 'verify-email'], true)) {
+=======
+// Redirect protected pages before the header template sends any output.
+if (in_array($page, ['checkout', 'account', 'orders', 'tracking', 'notifications'], true)) {
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
     require_login();
 }
 if (is_admin() && in_array($page, ['account', 'orders'], true)) {
@@ -73,6 +91,7 @@ if (is_admin() && in_array($page, ['account', 'orders'], true)) {
 }
 
 if ($_SERVER['REQUEST_METHOD']==='POST' && ($_POST['action'] ?? '')==='cart_item_update') cart_ui_update();
+<<<<<<< HEAD
 if ($_SERVER['REQUEST_METHOD']==='POST' && in_array($_POST['action']??'', ['contact_send','testimonial_send','return_request','admin_category_save','admin_category_delete','admin_shipping_save','admin_shipping_delete','admin_testimonial_visibility','admin_return_status','admin_settings_save','admin_user_create'],true)) handle_compliance_action($_POST['action']);
 if ($_SERVER['REQUEST_METHOD']==='POST' && ($_POST['action'] ?? '')==='notification_delete') handle_notification_delete();
 if ($_SERVER['REQUEST_METHOD']==='POST' && ($_POST['action'] ?? '')==='admin_purchase_order_delete') handle_purchase_order_delete();
@@ -80,16 +99,21 @@ if ($_SERVER['REQUEST_METHOD']==='POST' && ($_POST['action'] ?? '')==='erp_po_re
 if ($_SERVER['REQUEST_METHOD']==='POST' && ($_POST['action'] ?? '')==='admin_profit_cost') handle_profit_cost();
 if ($_SERVER['REQUEST_METHOD']==='POST' && ($_POST['action'] ?? '')==='finance_expense_save') handle_finance_expense();
 if ($_SERVER['REQUEST_METHOD']==='POST' && ($_POST['action'] ?? '')==='product_review') handle_product_review();
+=======
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
 if ($_SERVER['REQUEST_METHOD']==='GET' && ($_GET['cart_snapshot'] ?? '')==='1') {
     if (is_admin()) cart_ui_response(['error'=>'Keranjang hanya tersedia untuk pelanggan.'],403);
     cart_ui_response(cart_ui_snapshot());
 }
 block_admin_purchase($page, is_string($_POST['action'] ?? '') ? ($_POST['action'] ?? '') : '');
 require_once __DIR__.'/includes/admin-reset.php';
+<<<<<<< HEAD
 if ($page==='checkout' && isset($_SESSION['user']) && !is_admin() && !customer_phone_verified()) {
     flash('error','Verifikasi nomor WhatsApp Anda terlebih dahulu sebelum checkout.');
     redirect('?page=account#phone-verification');
 }
+=======
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
 if ($page==='checkout' && ($stockErrors=cart_stock_errors())) {
     flash('error',implode(' ',$stockErrors).' Perbaiki keranjang sebelum checkout.');
     redirect('?page=cart');
@@ -97,18 +121,27 @@ if ($page==='checkout' && ($stockErrors=cart_stock_errors())) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'admin_reset_data') handle_admin_reset();
 require_once __DIR__.'/includes/budgets.php';
 if($page==='admin')require_admin();
+<<<<<<< HEAD
 if($page==='admin'&&($_GET['tab']??'')==='reports'&&in_array($_GET['export']??'',['pdf','csv'],true))finance_export();
+=======
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
 if ($_SERVER['REQUEST_METHOD']==='POST' && in_array($_POST['action']??'', ['midtrans_start','midtrans_sync'],true)) handle_midtrans_action($_POST['action']);
 if ($_SERVER['REQUEST_METHOD']==='POST' && in_array($_POST['action']??'', ['customer_photo_upload','customer_photo_remove'],true)) handle_profile_photo($_POST['action']);
 if ($_SERVER['REQUEST_METHOD']==='POST' && in_array($_POST['action']??'', ['admin_payment_save','admin_qris_save'],true)) handle_payment_settings();
 if($_SERVER['REQUEST_METHOD']==='POST' && ($_POST['action']??'')==='admin_user_manage')handle_user_management();
+<<<<<<< HEAD
 if($_SERVER['REQUEST_METHOD']==='POST' && ($_POST['action']??'')==='admin_crm_save')handle_crm_save();
+=======
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
 if($_SERVER['REQUEST_METHOD']==='POST' && ($_POST['action']??'')==='customer_order_cancel')handle_customer_order_cancel();
 if($_SERVER['REQUEST_METHOD']==='POST' && in_array($_POST['action']??'', ['customer_change_password','customer_save_notifications'],true))handle_customer_account_settings($_POST['action']);
 if($_SERVER['REQUEST_METHOD']==='POST' && in_array($_POST['action']??'', ['admin_promotion_save','admin_promotion_delete'],true))handle_store_promotion();
 if($_SERVER['REQUEST_METHOD']==='POST' && in_array($_POST['action'] ?? '',['admin_collection_save','admin_collection_delete'],true))handle_collection_action($_POST['action']);
 if($_SERVER['REQUEST_METHOD']==='POST' && in_array($_POST['action'] ?? '',['admin_order_delete','admin_customer_save','admin_tracking_save','admin_tracking_delete'],true))handle_admin_management($_POST['action']);
+<<<<<<< HEAD
 if($_SERVER['REQUEST_METHOD']==='POST' && ($_POST['action']??'')==='admin_manual_payment_confirm')handle_manual_payment_confirm();
+=======
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
 if ($_SERVER['REQUEST_METHOD']==='POST' && ($_POST['action'] ?? '')==='newsletter_subscribe') {
     $email=is_string($_POST['email'] ?? null)?strtolower(trim($_POST['email'])):'';
     if (!is_string($_POST['csrf'] ?? null) || !hash_equals(auth_csrf(),$_POST['csrf']) || !filter_var($email,FILTER_VALIDATE_EMAIL) || strlen($email)>150) {
@@ -122,7 +155,11 @@ if ($_SERVER['REQUEST_METHOD']==='POST' && ($_POST['action'] ?? '')==='newslette
     }
     redirect('?page='.($page==='admin'?'home':$page));
 }
+<<<<<<< HEAD
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && in_array($_POST['action'] ?? '', ['register_send_otp','register_verify_otp','register_restart','register_send_email_otp','register_verify_email_otp','register_email_restart','account_send_email_otp','account_verify_email_otp','account_send_phone_otp','account_verify_phone_otp','account_restart_phone','register','forgot_send_otp','forgot_verify_otp','forgot_restart','forgot_email','reset_password'], true)) auth_flow_action($_POST['action']);
+=======
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && in_array($_POST['action'] ?? '', ['register_send_otp','register_verify_otp','register_restart','register','forgot_send_otp','forgot_verify_otp','forgot_email','reset_password'], true)) auth_flow_action($_POST['action']);
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && in_array($_POST['action'] ?? '', ['admin_change_password', 'admin_save_notifications'], true)) handle_admin_account_settings($_POST['action']);
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && in_array($_POST['action'] ?? '', ['admin_hero_ad_save', 'admin_hero_ad_add', 'admin_hero_ad_delete', 'admin_hero_ad_move'], true)) handle_hero_ad_save();
 if($_SERVER['REQUEST_METHOD']==='POST' && in_array($_POST['action']??'', ['erp_budget_save','erp_budget_delete'],true))handle_budget_action();
@@ -207,12 +244,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             flash('error', 'Email/No. HP dan password wajib diisi.');
             redirect('?page=login');
         }
+<<<<<<< HEAD
         // Email disimpan huruf kecil; login tidak boleh gagal karena huruf besar/kecil.
         if (filter_var($identity, FILTER_VALIDATE_EMAIL)) $identity = strtolower($identity);
 
         $canonicalPhone=$identity; $legacyPhone=$identity;
         try { $canonicalPhone=auth_phone($identity); $legacyPhone='0'.substr($canonicalPhone,2); } catch (InvalidArgumentException $error) {}
         $stmt = db()->prepare('SELECT id, name, email, phone, password, role, is_active, phone_verified_at FROM users WHERE email = ? OR phone = ? OR phone = ? LIMIT 1');
+=======
+
+        $canonicalPhone=$identity; $legacyPhone=$identity;
+        try { $canonicalPhone=auth_phone($identity); $legacyPhone='0'.substr($canonicalPhone,2); } catch (InvalidArgumentException $error) {}
+        $stmt = db()->prepare('SELECT id, name, email, phone, password, role, is_active FROM users WHERE email = ? OR phone = ? OR phone = ? LIMIT 1');
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
         $stmt->bind_param('sss', $identity, $canonicalPhone, $legacyPhone);
         $stmt->execute();
         $user = $stmt->get_result()->fetch_assoc();
@@ -233,17 +277,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'role' => $user['role']
         ];
 
+<<<<<<< HEAD
         if (in_array($user['role'], ['admin', 'owner'], true)) {
             $_SESSION['cart'] = [];
             flash('success', $user['role'] === 'owner' ? 'Login pemilik berhasil.' : 'Login admin berhasil.');
+=======
+        if ($user['role'] === 'admin') {
+            $_SESSION['cart'] = [];
+            flash('success', 'Login admin berhasil.');
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
             redirect('?page=admin');
         }
 
         flash('success', 'Login berhasil. Selamat datang, ' . $user['name'] . '!');
+<<<<<<< HEAD
         if (empty($user['phone_verified_at'])) {
             flash('error', 'Verifikasi nomor WhatsApp Anda dulu agar akun aktif dan pesanan bisa diproses.');
             redirect('?page=account#phone-verification');
         }
+=======
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
         redirect('?page=account');
     }
 
@@ -266,6 +319,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             redirect($accountDestination);
         }
 
+<<<<<<< HEAD
         $emailChanged = $email !== strtolower(trim((string)($_SESSION['user']['email'] ?? '')));
         $phoneChanged = $phone !== trim((string)($_SESSION['user']['phone'] ?? ''));
         // Status verifikasi lama tidak berlaku untuk email/nomor yang diganti.
@@ -273,6 +327,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($emailChanged) $updates[] = 'email_verified_at = NULL';
         if ($phoneChanged) $updates[] = 'phone_verified_at = NULL';
         $stmt = db()->prepare('UPDATE users SET ' . implode(', ', $updates) . ' WHERE id = ?');
+=======
+        $stmt = db()->prepare('UPDATE users SET name = ?, email = ?, phone = ? WHERE id = ?');
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
         $stmt->bind_param('sssi', $name, $email, $phoneDb, $userId);
         $ok = $stmt->execute();
         $stmt->close();
@@ -281,6 +338,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user']['name'] = $name;
             $_SESSION['user']['phone'] = $phone;
             $_SESSION['user']['email'] = $email;
+<<<<<<< HEAD
             if ($emailChanged) unset($_SESSION['account_email_challenge']);
             if ($phoneChanged) unset($_SESSION['account_phone_challenge']);
             flash('success', match (true) {
@@ -288,6 +346,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $phoneChanged => 'Profil diperbarui. Nomor baru tersimpan sebagai kontak dan tidak perlu verifikasi.',
                 default => 'Profil berhasil diperbarui.',
             });
+=======
+            flash('success', 'Profil berhasil diperbarui.');
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
         } else {
             flash('error', 'Profil gagal diperbarui.');
         }
@@ -410,7 +471,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $subtotal=0;
             foreach($cartIds as $productId) {
                 $qty=(int)$_SESSION['cart'][$productId];
+<<<<<<< HEAD
                 $lock=$conn->prepare('SELECT name,price,stock,status,cost_price FROM products WHERE id=? FOR UPDATE');
+=======
+                $lock=$conn->prepare('SELECT name,price,stock,status FROM products WHERE id=? FOR UPDATE');
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
                 if(!$lock)throw new RuntimeException('Pemeriksaan produk gagal.');
                 $lock->bind_param('i',$productId);
                 if(!$lock->execute())throw new RuntimeException('Pemeriksaan produk gagal.');
@@ -446,11 +511,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $pid = (int)$productId;
                 $itemStmt->bind_param('iisdidid', $orderDbId, $pid, $productName, $price, $qty, $itemSubtotal, $qty, $price);
                 if (!$itemStmt->execute()) throw new Exception($itemStmt->error);
+<<<<<<< HEAD
                 $itemId=$itemStmt->insert_id;
                 $costAtPurchase=$products[$productId]['cost_price']??null;
                 $costStmt=$conn->prepare('UPDATE order_items SET cost_at_purchase=? WHERE id=?');
                 $costStmt->bind_param('di',$costAtPurchase,$itemId);
                 if(!$costStmt->execute())throw new RuntimeException('Pencatatan HPP gagal.');$costStmt->close();
+=======
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
                 $stockStmt=$conn->prepare('UPDATE products SET stock=stock-? WHERE id=? AND stock>=?');
                 if(!$stockStmt)throw new RuntimeException('Pengurangan stok gagal.');
                 $stockStmt->bind_param('iii',$qty,$pid,$qty);
@@ -483,6 +551,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ];
 
         $_SESSION['cart'] = [];
+<<<<<<< HEAD
         $paymentDestination=$method!=='COD'?'?page=awaiting-payment&id='.$orderDbId:'?page=orders';
         if(midtrans_ready()&&$method!=='COD') {
             try {midtrans_start_order($orderDbId,$userId);}
@@ -490,6 +559,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         flash('success', 'Pesanan berhasil dibuat. Terima kasih sudah berbelanja!');
         redirect($paymentDestination);
+=======
+        if(midtrans_ready()&&$method!=='COD') {
+            try {midtrans_start_order($orderDbId,$userId);}
+            catch(Throwable $error) {flash('error','Pesanan tersimpan. Tagihan belum dapat ditampilkan; klik Siapkan pembayaran di Pesanan Saya untuk mencoba kembali.');redirect('?page=orders');}
+        }
+        flash('success', 'Pesanan berhasil dibuat. Terima kasih sudah berbelanja!');
+        redirect('?page=orders');
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
     }
 }
 

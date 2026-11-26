@@ -3,7 +3,10 @@ require __DIR__.'/includes/db.php';
 require __DIR__.'/includes/helpers.php';
 require __DIR__.'/includes/customer-orders.php';
 require __DIR__.'/includes/midtrans.php';
+<<<<<<< HEAD
 require __DIR__.'/includes/finance.php';
+=======
+>>>>>>> 236154f061791b75c2ae12de4c6cac63e2f535f9
 header('Content-Type: application/json; charset=utf-8');
 if(($_SERVER['REQUEST_METHOD']??'')!=='POST'){http_response_code(405);echo '{"error":"POST required"}';exit;}
 if(!midtrans_ready()){http_response_code(503);echo '{"error":"Sandbox not configured"}';exit;}
