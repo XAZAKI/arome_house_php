@@ -1,0 +1,6 @@
+<?php $settings=payment_settings(); ?>
+<section class="payment-page section container"><div class="payment-heading"><p>ARÔME HOUSE / PAYMENT</p><h1>Panduan pembayaran</h1><span>Pilih metode saat checkout dan ikuti instruksi berikut.</span></div><div class="payment-overview-grid">
+<?php foreach(['transfer'=>['bank','Transfer Bank'],'cod'=>['cod','COD'],'qris'=>['qris','QRIS']] as $key=>$choice): if(!$settings[$key.'_enabled'])continue; ?>
+<article class="payment-overview-card"><img src="assets/images/payments/<?= $choice[0] ?>.svg" alt="" width="180" height="135"><h2><?= e($choice[1]) ?></h2><small>Tersedia</small>
+<?php $instructionSettings=$settings;$instructionMethod=$choice[1];include __DIR__.'/../includes/payment-instructions.php'; ?></article>
+<?php endforeach; ?></div><div class="payment-information"><h2>Instruksi untuk pesanan Anda</h2><p>Setelah checkout, buka Pesanan Saya untuk melihat nomor pesanan, nominal pembayaran, rekening atau QRIS, dan batas pembayaran sesuai metode yang Anda pilih. Konfirmasi pembayaran dilakukan kepada toko.</p><a class="btn btn-dark" href="?page=orders">Pesanan saya</a><a class="btn btn-outline" href="?page=contact">Hubungi toko</a></div></section>

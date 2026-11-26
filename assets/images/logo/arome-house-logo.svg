@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="150" viewBox="0 0 520 150">
+<rect width="520" height="150" fill="none"/>
+<g transform="translate(20 20)" fill="none" stroke="#6b442f" stroke-width="5">
+<path d="M55 95V25M25 55H85M35 35L75 75M75 35L35 75"/>
+<circle cx="55" cy="60" r="40"/>
+</g>
+<text x="120" y="67" font-family="Georgia,serif" font-size="39" letter-spacing="6" fill="#5b3828">ARÔME</text>
+<text x="123" y="101" font-family="Arial,sans-serif" font-size="17" letter-spacing="8" fill="#806f63">HOUSE</text>
+</svg>

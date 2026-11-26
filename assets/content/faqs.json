@@ -1,0 +1,238 @@
+{
+    "title":  "Frequently Asked Questions",
+    "intro":  [
+                  "Find answers about orders, delivery, returns, your account, products, and payments."
+              ],
+    "sections":  [
+                     {
+                         "questions":  [
+                                           {
+                                               "paragraphs":  [
+                                                                  "Contact ARÔME HOUSE Customer Support with your order number to request cancellation. Our team will check whether your order can still be canceled. Orders that have already been shipped require a separate review."
+                                                              ],
+                                               "question":  "How can I cancel my order?"
+                                           },
+                                           {
+                                               "question":  "How can I check my order status?",
+                                               "paragraphs":  [
+                                                                  "To check your order status, log in to your account and go to “My Orders.” You can view your order list and its current status, such as Pending Payment, Processing, Shipped, or Delivered.",
+                                                                  "How to check your order status:",
+                                                                  "Log in to your account.",
+                                                                  "Go to “My Orders.”",
+                                                                  "Select the order you want to check.",
+                                                                  "Check the Order Status section.",
+                                                                  "Common order statuses:",
+                                                                  "Pending Payment – Your payment has not been confirmed yet.",
+                                                                  "Processing – Your order is being prepared and packed by our team.",
+                                                                  "Shipped – Your order has been handed over to the courier.",
+                                                                  "Delivered – Your order has arrived and been received."
+                                                              ]
+                                           },
+                                           {
+                                               "paragraphs":  [
+                                                                  "Your account displays the latest order status saved by our team. Refresh My Orders or Tracking to see updates. Courier tracking is not automatically synchronized by this website."
+                                                              ],
+                                               "question":  "Will my order status be updated automatically?"
+                                           },
+                                           {
+                                               "question":  "Why is my shipping status delayed?",
+                                               "paragraphs":  [
+                                                                  "A “Delayed” shipping status may be caused by several factors, including:",
+                                                                  "Your package is still being processed at the warehouse and has not yet been scanned for the next stage.",
+                                                                  "The courier is experiencing delays due to high package volume or operational issues.",
+                                                                  "There is an issue with the delivery address or recipient information, so the package needs to be held for verification.",
+                                                                  "Tracking information has not been updated yet.",
+                                                                  "There is an issue with the website or tracking system."
+                                                              ]
+                                           }
+                                       ],
+                         "title":  "Orders"
+                     },
+                     {
+                         "questions":  [
+                                           {
+                                               "paragraphs":  [
+                                                                  "Orders are prepared after payment is verified and stock is checked. Processing may take longer during holidays or periods of high demand. Contact Customer Support for information about your order."
+                                                              ],
+                                               "question":  "How long does it take to pack my order?"
+                                           },
+                                           {
+                                               "paragraphs":  [
+                                                                  "Available delivery methods and their estimated delivery times are displayed at checkout. Processing starts after payment verification. Delivery estimates depend on the destination and courier operations."
+                                                              ],
+                                               "question":  "How long does it take for my order to be processed and shipped?"
+                                           },
+                                           {
+                                               "question":  "How can I track my order?",
+                                               "paragraphs":  [
+                                                                  "Once your order has been shipped, you will receive a tracking number, which can be found on the “Orders” page.",
+                                                                  "To track your order:",
+                                                                  "Log in to your account.",
+                                                                  "Go to “Orders,” “My Orders,” or “Order History.”",
+                                                                  "Select the order you want to track.",
+                                                                  "Find the Tracking Number or select “Track Shipment.”",
+                                                                  "If a tracking number is available, you can also enter it directly on the website of the courier service used for your order."
+                                                              ]
+                                           },
+                                           {
+                                               "paragraphs":  [
+                                                                  "Couriers may consider package weight, size, destination, and service when calculating shipping costs. The shipping amount charged by this website is shown at checkout for the method you select."
+                                                              ],
+                                               "question":  "Does package size affect shipping costs?"
+                                           }
+                                       ],
+                         "title":  "Shipping \u0026 Delivery"
+                     },
+                     {
+                         "questions":  [
+                                           {
+                                               "question":  "What should I do if I receive a damaged product?",
+                                               "paragraphs":  [
+                                                                  "If you receive a damaged or defective product, please contact ARÔME HOUSE Customer Service via WhatsApp at +62 812-3456-7890 as soon as possible.",
+                                                                  "Please report the issue within a maximum of 7 days after receiving your order. To help us review your claim, make sure you have valid evidence showing the condition of the product when it was received."
+                                                              ]
+                                           },
+                                           {
+                                               "paragraphs":  [
+                                                                  "Return transit time depends on your location. After the returned product has been received, inspected, and the refund approved, the refund is processed within a maximum of 3 × 24 business hours."
+                                                              ],
+                                               "question":  "How long does it take to return a damaged product?"
+                                           },
+                                           {
+                                               "paragraphs":  [
+                                                                  "A replacement may be approved for verified defects or damage in accordance with our Return \u0026 Refund Policy. Contact Customer Support before shipping a product back."
+                                                              ],
+                                               "question":  "Can a damaged product be replaced with a new one?"
+                                           },
+                                           {
+                                               "question":  "What should I do if I discover a damaged product after the return period has ended?",
+                                               "paragraphs":  [
+                                                                  "You can still contact ARÔME HOUSE Customer Service via WhatsApp at +62 812-3456-7890. Our team will first review your order and the condition of the product to determine the appropriate solution."
+                                                              ]
+                                           },
+                                           {
+                                               "paragraphs":  [
+                                                                  "A refund or replacement may be approved after our team reviews the evidence and product condition. Report the issue within 7 days of receipt and include the order number, proof of purchase, unboxing video, and shipping-label photo."
+                                                              ],
+                                               "question":  "Can I receive a refund or compensation for a damaged product?"
+                                           }
+                                       ],
+                         "title":  "Product Returns \u0026 Refunds"
+                     },
+                     {
+                         "questions":  [
+                                           {
+                                               "question":  "What should I do if I receive a damaged product?",
+                                               "paragraphs":  [
+                                                                  "If your product arrives damaged, you can request a return or compensation during the warranty period, which is a maximum of 7 days after receiving the product.",
+                                                                  "To submit a claim, please provide:",
+                                                                  "An unboxing video, starting from when the package is still sealed until the damage or issue with the product is clearly visible.",
+                                                                  "A photo of the shipping label or tracking number."
+                                                              ]
+                                           },
+                                           {
+                                               "paragraphs":  [
+                                                                  "Our team reviews the reported damage and supporting evidence before confirming whether a return, replacement, or refund is appropriate. The outcome and any return-shipping arrangements will be communicated after review. Refer to the Return \u0026 Refund Policy for eligibility and exclusions."
+                                                              ],
+                                               "question":  "What compensation is available for damaged products?"
+                                           },
+                                           {
+                                               "question":  "What if I receive a product that is different from what I ordered?",
+                                               "paragraphs":  [
+                                                                  "A claim for an incorrect product must be submitted within the warranty period, which is a maximum of 7 days after receiving the product.",
+                                                                  "Please provide:",
+                                                                  "An unboxing video, starting from when the package is still sealed and showing the product received.",
+                                                                  "A photo of the shipping label or tracking number.",
+                                                                  "Once the claim is submitted, ARÔME HOUSE will conduct an internal review to verify whether the contents of the package match the order.",
+                                                                  "If the review confirms that the package contents match the order, the product cannot be returned and no refund will be provided.",
+                                                                  "If the review confirms that the product does not match the order and the product is still sealed, it may be returned. Once the returned product has been received, the refund will be processed based on the price paid for the product.",
+                                                                  "If the product is confirmed to be incorrect but has already been opened and no unboxing video is available, compensation may be provided in the form of a voucher or Gift for Selected Customers for a future order."
+                                                              ]
+                                           }
+                                       ],
+                         "title":  "Product Returns"
+                     },
+                     {
+                         "questions":  [
+                                           {
+                                               "paragraphs":  [
+                                                                  "Open Forgot Password on the Login page and choose email or WhatsApp. If a reset option is unavailable, contact Customer Support for assistance."
+                                                              ],
+                                               "question":  "What should I do if I forget my password?"
+                                           },
+                                           {
+                                               "paragraphs":  [
+                                                                  "Open Login, select Forgot Password, enter your registered email or WhatsApp number, then follow the reset link or verify the OTP. Enter and confirm your new password."
+                                                              ],
+                                               "question":  "How can I reset my password?"
+                                           },
+                                           {
+                                               "paragraphs":  [
+                                                                  "For administrators, open Akun Saya in the ERP panel and use Ganti Password. Customers can request a new password through Forgot Password on the Login page."
+                                                              ],
+                                               "question":  "Can I change my account password?"
+                                           }
+                                       ],
+                         "title":  "Account"
+                     },
+                     {
+                         "questions":  [
+                                           {
+                                               "question":  "How should I use Eau de Parfum (EDP)?",
+                                               "paragraphs":  [
+                                                                  "For the best results, apply Eau de Parfum (EDP) directly to your skin after showering, when your skin is clean and moisturized.",
+                                                                  "Hold the bottle approximately 15–25 cm away from your skin, then apply it to pulse points such as:",
+                                                                  "Wrists",
+                                                                  "Neck",
+                                                                  "Behind the ears",
+                                                                  "Avoid rubbing your skin after applying the perfume, as this may cause the fragrance to change or fade more quickly."
+                                                              ]
+                                           },
+                                           {
+                                               "paragraphs":  [
+                                                                  "Apply a small amount according to the instructions on your product. Fragrance intensity and longevity vary by product, skin, and environment. Avoid the eyes and irritated skin, and stop use if irritation occurs."
+                                                              ],
+                                               "question":  "How should I use Extrait de Parfum?"
+                                           },
+                                           {
+                                               "question":  "How should I spray perfume correctly?",
+                                               "paragraphs":  [
+                                                                  "Hold the perfume bottle approximately 15–25 cm away from your skin to help distribute the fragrance evenly.",
+                                                                  "Apply it to pulse points such as the wrists, neck, chest, or inner elbows. These areas generate body heat, which can help the fragrance develop and spread.",
+                                                                  "Use approximately 4–6 sprays, or adjust according to the character and intensity of the fragrance you are wearing."
+                                                              ]
+                                           },
+                                           {
+                                               "paragraphs":  [
+                                                                  "Check the registration details on the individual product packaging and product information. Contact Customer Support to request supporting information before purchasing. This website does not make a blanket certification claim for every product."
+                                                              ],
+                                               "question":  "Are ARÔME HOUSE products registered and certified by BOPM?"
+                                           },
+                                           {
+                                               "paragraphs":  [
+                                                                  "Certification may differ by product. Please check the product packaging or request supporting information from Customer Support."
+                                                              ],
+                                               "question":  "Are ARÔME HOUSE products halal-certified?"
+                                           }
+                                       ],
+                         "title":  "Products"
+                     },
+                     {
+                         "questions":  [
+                                           {
+                                               "paragraphs":  [
+                                                                  "Choose from the payment methods shown at checkout. If you have already placed an order and need to change the method, contact Customer Support before making another payment."
+                                                              ],
+                                               "question":  "Can I change my payment method?"
+                                           },
+                                           {
+                                               "paragraphs":  [
+                                                                  "Payment verification follows the method selected at checkout and confirmation by our team. Check your account for the latest status or contact Customer Support with your payment reference."
+                                                              ],
+                                               "question":  "When will my payment be verified?"
+                                           }
+                                       ],
+                         "title":  "Payment"
+                     }
+                 ]
+}

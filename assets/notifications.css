@@ -1,0 +1,24 @@
+.notification-menu{position:relative;display:flex;align-items:center;white-space:normal}
+.notification-trigger{border:0;background:transparent;color:var(--theme-ink);display:grid;place-items:center;width:36px;height:40px;border-radius:6px;cursor:pointer}
+.notification-trigger:hover{background:rgb(var(--theme-ink-rgb)/.07)}
+.notification-panel{position:absolute;right:0;top:calc(100% + 12px);width:min(380px,calc(100vw - 32px));background:#fff;border:1px solid #e4dcef;border-radius:9px;box-shadow:0 10px 30px rgb(57 48 71 / .13);z-index:40;overflow:hidden;animation:notification-enter .2s ease;color:#393047}
+.notification-panel[hidden]{display:none}
+.notification-panel h2{margin:0;padding:17px 20px;border-bottom:1px solid #eee8f4;font-size:17px;font-weight:600}
+.notification-list{max-height:300px;overflow-y:auto}
+.notification-empty{padding:36px 20px;text-align:center;font-size:14px;color:#867b91;margin:0}
+.site-iridescent .notification-item{display:flex;flex-direction:column;gap:5px;padding:14px 20px;border-bottom:1px solid #eee8f4;text-decoration:none;font-size:13px;color:#393047}
+.notification-item small{font-size:11px;color:#867b91}
+.site-iridescent .notification-item:hover{background:#f7f2fc;text-decoration:none}
+.site-iridescent .notification-view-all{display:block;text-align:center;padding:16px;border-top:1px solid #eee8f4;font-size:13px;color:#393047;text-decoration:underline;text-underline-offset:4px}
+.notifications-page{max-width:900px;min-height:420px}
+.notification-page-item{display:flex;flex-direction:column;gap:8px;padding:20px;margin:16px 0;background:#fff;border:1px solid #e4dcef;border-radius:8px;font-size:14px}
+.notification-page-empty{padding:35px;background:#fff;border-radius:8px;text-align:center}
+.notification-row{display:flex;align-items:center;border-bottom:1px solid #eee8f4}
+.notification-row>.notification-item,.notification-row>.notification-page-item{flex:1;min-width:0;overflow-wrap:anywhere;border-bottom:0}
+.notification-delete-form{flex-shrink:0;margin:0;padding:8px}
+.notification-delete{min-height:44px;padding:8px 12px;border:1px solid #e4dcef;border-radius:6px;background:#fff;color:#9b263c;font:inherit;font-size:12px;cursor:pointer}
+.notification-delete:hover{background:#fff1f3}
+.notification-delete:focus-visible{outline:2px solid #9b263c;outline-offset:2px}
+@keyframes notification-enter{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){.notification-panel{position:fixed;top:70px;right:16px}}
+@media(prefers-reduced-motion:reduce){.notification-panel{animation:none}}

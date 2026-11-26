@@ -1,0 +1,48 @@
+/* Gentle interaction motion without changing the clean product layout. */
+.site-iridescent :is(.home-product-photo, .shop-product-image, .product-image-wrap, .product-main-image) {
+  position: relative;
+  overflow: hidden;
+}
+.site-iridescent :is(.home-product-photo, .shop-product-image, .product-image-wrap, .product-main-image) img {
+  transition: transform .65s cubic-bezier(.22,.61,.36,1), filter .45s ease;
+}
+.site-iridescent :is(.home-product-photo, .shop-product-image)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgb(255 255 255 / .17) 50%, transparent 65%);
+  transform: translateX(-120%);
+  transition: transform .85s ease;
+  pointer-events: none;
+}
+@media(hover:hover) and (pointer:fine) {
+  .site-iridescent :is(.home-product-photo, .shop-product-image, .product-image-wrap, .product-main-image):hover img {
+    transform: scale(1.045);
+    filter: brightness(1.025);
+  }
+  .site-iridescent :is(.home-product-photo, .shop-product-image):hover::after { transform: translateX(120%); }
+  .site-iridescent :is(.btn, .erp-btn, .auth-submit, .cart-ui-button, .about-button):hover { transform: translateY(-2px); }
+}
+.site-iridescent :is(.home-product-photo, .shop-product-image):focus-visible img { transform: scale(1.025); }
+.site-iridescent :is(.btn, .erp-btn, .auth-submit, .cart-ui-button, .about-button) {
+  transition: transform .22s ease, box-shadow .22s ease, background-color .22s ease;
+}
+.site-iridescent :is(.btn, .erp-btn, .auth-submit, .cart-ui-button, .about-button):active { transform: translateY(0); }
+.site-iridescent :is(.nav-actions > a, .header-account-trigger, .notification-trigger) {
+  transition: background-color .2s ease, color .2s ease;
+}
+.site-iridescent .soft-reveal {
+  animation: soft-content-enter .6s cubic-bezier(.22,.61,.36,1) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+@keyframes soft-content-enter { from { opacity: .3; translate: 0 12px; } to { opacity: 1; translate: 0 0; } }
+@media(prefers-reduced-motion:reduce) {
+  .site-iridescent .soft-reveal { animation: none; }
+  .site-iridescent :is(.home-product-photo, .shop-product-image, .product-image-wrap, .product-main-image) img,
+  .site-iridescent :is(.home-product-photo, .shop-product-image)::after,
+  .site-iridescent :is(.btn, .erp-btn, .auth-submit, .cart-ui-button, .about-button, .nav-actions > a, .header-account-trigger, .notification-trigger) { transition: none; }
+  .site-iridescent :is(.home-product-photo, .shop-product-image, .product-image-wrap, .product-main-image):hover img,
+  .site-iridescent :is(.home-product-photo, .shop-product-image):focus-visible img,
+  .site-iridescent :is(.btn, .erp-btn, .auth-submit, .cart-ui-button, .about-button):hover { transform: none; filter: none; }
+  .site-iridescent :is(.home-product-photo, .shop-product-image)::after { display: none; }
+}

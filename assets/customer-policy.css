@@ -1,0 +1,23 @@
+.site-iridescent main:has(.customer-policy){background:#fff}
+.customer-policy{max-width:980px;margin:auto;padding:38px 28px 64px;color:var(--theme-ink)}
+.customer-policy h1{text-align:center;font-size:clamp(27px,3vw,38px);font-weight:500;line-height:1.3;margin:0 0 34px}
+.customer-policy-content{max-width:760px;margin:auto}
+.customer-policy p,.customer-policy li{font-size:13px;line-height:1.85}
+.customer-policy p{margin:0 0 12px}
+.customer-policy-intro{color:#746582}
+.customer-policy-section{margin-top:26px}
+.customer-policy h2{font-size:15px;font-weight:600;line-height:1.5;margin:0 0 12px}
+.customer-policy ul{padding-left:22px;margin:10px 0 16px}
+.customer-policy li{margin-bottom:6px}
+.site-iridescent .customer-policy a{text-decoration:underline;text-underline-offset:3px}
+.customer-faq-item{border-bottom:1px solid #e4dcef}
+.customer-faq-item summary{cursor:pointer;padding:16px 26px 16px 0;font-size:14px;font-weight:500;line-height:1.6;list-style:none;position:relative}
+.customer-faq-item summary::-webkit-details-marker{display:none}
+.customer-faq-item summary::after{content:"+";position:absolute;right:0;top:16px;font-size:20px;line-height:1.2}
+.customer-faq-item[open] summary::after{content:"−"}
+.customer-faq-item>div{padding:0 18px 14px 0}
+.customer-faq-item[open]>div{animation:faq-answer-in .2s ease both}
+.customer-policy summary:focus-visible{outline:2px solid #73577e;outline-offset:3px}
+@keyframes faq-answer-in{from{opacity:.4;translate:0 -3px}to{opacity:1;translate:0 0}}
+@media(max-width:600px){.customer-policy{padding:30px 6% 45px}.customer-policy h1{margin-bottom:25px}}
+@media(prefers-reduced-motion:reduce){.customer-faq-item[open]>div{animation:none}}

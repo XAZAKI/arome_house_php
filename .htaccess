@@ -1,0 +1,19 @@
+# ARÔME HOUSE — konfigurasi Apache untuk shared hosting.
+Options -Indexes
+DirectoryIndex index.php
+
+# Blokir akses langsung ke file sensitif.
+<FilesMatch "\.(sql|md|log|ini|sh|bak|env)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Blokir folder internal (kode, tes, alat, konfigurasi, git).
+<IfModule mod_alias.c>
+    RedirectMatch 404 (?i)/(?:tests|tools|includes|config|\.git)(?:/|$)
+</IfModule>

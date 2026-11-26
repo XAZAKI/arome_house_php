@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 72" fill="#000">
+  <rect x="3" y="3" width="58" height="66" rx="9" fill="#fff" stroke="#000" stroke-width="3"/>
+  <circle cx="25" cy="23" r="8"/>
+  <path d="M11 46c0-10 4-15 14-15s14 5 14 15H11Z"/>
+  <path d="m22 33 3 4 3-4-3 10Z" fill="#fff"/>
+  <g transform="translate(43 39)"><path d="m-4-13 8 0 1 5 4 2 4-2 4 7-4 3v4l4 3-4 7-4-2-4 2-1 5h-8l-1-5-4-2-4 2-4-7 4-3v-4l-4-3 4-7 4 2 4-2Z" stroke="#fff" stroke-width="2"/><circle r="5" fill="#fff"/></g>
+  <path d="M4 54h56v6a8 8 0 0 1-8 8H12a8 8 0 0 1-8-8Z"/>
+  <text x="32" y="64" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="9" font-weight="700">ADMIN</text>
+</svg>

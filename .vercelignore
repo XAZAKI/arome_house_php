@@ -1,0 +1,8 @@
+.git
+.freebuff
+tests
+tools
+database.sql
+*.log
+arome-house-hosting.zip
+node_modules

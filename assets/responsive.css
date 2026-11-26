@@ -1,0 +1,87 @@
+/* Final layout adjustments for touch screens; loaded after page styles. */
+@media (max-width: 900px) {
+  .detail-info, .shop-results, .payment-checkout > div, .payment-summary,
+  .customer-content, .customer-panel, .erp-main, .erp-card { min-width: 0; }
+  .detail-info h1, .customer-page-heading h1, .erp-top h1,
+  .payment-instructions, .customer-panel-heading, .erp-card code { overflow-wrap: anywhere; }
+  .detail-grid { gap: 28px; }
+  .detail-info h1 { font-size: clamp(26px, 4vw, 36px); line-height: 1.3; }
+  .benefit-list { flex-wrap: wrap; gap: 8px 16px; }
+  .product-gallery-thumbs { max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; }
+  .payment-summary { position: static; }
+  .customer-order-tabs { max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; min-width: 0; }
+  .customer-order-tabs > a { flex: 0 0 auto; min-width: 0; }
+  .erp-table-wrap { max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; }
+}
+@media (max-width: 700px) {
+  .site-iridescent input:not([type=checkbox]):not([type=radio]):not([type=hidden]):not([type=file]),
+  .site-iridescent textarea, .site-iridescent select { font-size: 16px; }
+  .site-iridescent .btn { min-height: 44px; white-space: normal; }
+  .section { padding-top: 28px; padding-bottom: 32px; }
+  .page-hero { padding-top: 28px; padding-bottom: 28px; }
+  .page-hero h1 { font-size: clamp(25px, 7vw, 32px); line-height: 1.3; }
+  .detail-info h1 { font-size: clamp(24px, 6vw, 30px); }
+  .detail-price { margin: 14px 0; }
+  .detail-info .qty-row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .qty-row form { min-width: 0; width: 100%; }
+  .qty-row .add-detail { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .qty-row .btn { width: 100%; }
+  .product-quantity { justify-content: space-between; gap: 12px; }
+  .product-quantity-control { flex-shrink: 0; height: 46px; }
+  .product-quantity-control button { width: 44px; height: 44px; }
+  .add-detail .product-quantity-control input { width: 46px; height: 44px; font-size: 16px; }
+  .payment-heading { margin-bottom: 24px; }
+  .payment-heading h1 { font-size: clamp(24px, 6vw, 30px); }
+  .payment-checkout .form-card { padding: 18px; margin-bottom: 16px; }
+  .payment-checkout h2 { font-size: 17px; margin-bottom: 18px; }
+  .payment-checkout label { margin-bottom: 14px; }
+  .payment-checkout label input, .payment-checkout label textarea,
+  .payment-checkout label select { margin-top: 7px; }
+  .payment-address-grid { gap: 8px; }
+  .payment-bank-option { min-height: 56px; }
+  .payment-summary { padding: 20px; }
+  .payment-summary .payment-order-item { align-items: flex-start; flex-wrap: wrap; }
+  .payment-order-item > span { min-width: 100px; }
+  .payment-order-item > strong { margin-left: auto; }
+  .payment-overview-card { padding: 22px 18px; }
+  .payment-inline-guide { padding: 14px; }
+  .payment-instructions .btn, .gateway-instructions form .btn { width: 100%; }
+  .payment-qris-image { width: min(260px, 100%); }
+  .customer-menu nav a { gap: 8px; min-height: 44px; padding: 10px 8px; font-size: 12px; }
+  .customer-panel-heading { align-items: flex-start; flex-wrap: wrap; gap: 10px; }
+  .customer-order-item { flex-wrap: wrap; }
+  .customer-order-item > div { min-width: 120px; }
+  .customer-order-item > strong { margin-left: auto; }
+  .customer-order-footer > div { white-space: normal; }
+  .customer-order-footer strong { display: inline-block; margin-left: 5px; }
+  .customer-order-actions { justify-content: stretch; }
+  .customer-order-actions .btn { flex: 1 1 120px; }
+  .customer-photo-form input[type=file], .erp-form input[type=file] { width: 100%; min-width: 0; }
+  .customer-form-row, .erp-form-row { grid-template-columns: minmax(0, 1fr); }
+  .erp-form fieldset { padding: 16px; }
+  .erp-form p { font-size: 13px; line-height: 1.7; margin: 0; }
+  .erp-card-head { align-items: flex-start; flex-wrap: wrap; gap: 12px; }
+  .admin-workspace .erp-main { padding-right: 16px; padding-left: 16px; }
+  .admin-workspace .erp-top { margin-right: -16px; margin-left: -16px; padding-right: 16px; padding-left: 16px; }
+  .admin-workspace .erp-top h1 { font-size: 19px; }
+  .erp-page-heading h2 { font-size: 22px; }
+  .erp-form .btn { width: 100%; }
+  .cart-drawer-subtotal { flex-wrap: wrap; gap: 8px; font-size: 20px; }
+  .cart-drawer-buttons .cart-ui-button { font-size: 12px; padding: 12px 8px; }
+  .toast-notice { top: 76px; right: 12px; max-width: calc(100% - 24px); }
+}
+@media (max-width: 360px) {
+  .payment-choice-grid { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .payment-choice { display: grid !important; grid-template-columns: 60px minmax(0, 1fr) 20px; gap: 3px 10px; padding: 12px; text-align: left; }
+  .payment-choice:has(input:checked) { padding: 11px; }
+  .payment-choice > img { grid-column: 1; grid-row: 1 / 3; width: 60px; height: 45px; }
+  .payment-choice > b { grid-column: 2; grid-row: 1; align-self: end; }
+  .payment-choice > span { grid-column: 2; grid-row: 2; align-self: start; }
+  .payment-choice > input { position: static; grid-column: 3; grid-row: 1 / 3; justify-self: end; }
+  .customer-order-shortcuts { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 6px; }
+  .customer-menu nav { grid-template-columns: minmax(0, 1fr); }
+  .shop-product-grid { gap: 22px 12px; }
+  .shop-product-price { flex-wrap: wrap; }
+  .shop-product-price strong { font-size: 14px; }
+  .customer-page-heading h1 { font-size: 24px; }
+}

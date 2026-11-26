@@ -1,0 +1,261 @@
+/* Shared iridescent theme for the storefront and administrator. */
+.site-iridescent {
+  background: #faf8ff;
+  color: #393047;
+}
+.site-iridescent main,
+.site-iridescent .site-header,
+.site-iridescent .footer {
+  --theme-ink: #393047;
+  --theme-ink-rgb: 57 48 71;
+  --theme-surface: #f0eafa;
+  --theme-surface-rgb: 240 234 250;
+}
+.site-iridescent .site-header {
+  background: linear-gradient(110deg, #fff8fc, #edf7ff 45%, #f1eaff 78%, #fff8ed);
+  border-bottom-color: #e5ddf1;
+  box-shadow: 0 5px 20px rgb(77 61 114 / .08);
+}
+.site-iridescent .site-header .brand.arome-logo {
+  background: transparent;
+  border-radius: 7px;
+  margin-left: 18px;
+}
+.site-iridescent .site-header .main-nav { justify-content: center; }
+.site-iridescent .site-header .nav-actions { margin-left: auto; gap: 18px; flex-shrink: 0; }
+@media(max-width:900px) {
+  .site-iridescent .site-header .brand.arome-logo { margin-left: 8px; }
+  .site-iridescent .site-header .nav-actions { gap: 12px; }
+}
+.site-iridescent .site-header .brand.arome-logo img,
+.site-iridescent .footer .brand.arome-logo img {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  object-fit: contain;
+  filter: none;
+  mix-blend-mode: normal;
+}
+.site-iridescent .hero-slide-promo,
+.site-iridescent .hero-slide-collection {
+  background: linear-gradient(120deg, #393047, #665279 45%, #476978);
+}
+.site-iridescent .hero-overlay {
+  background: linear-gradient(90deg, rgb(36 25 48 / .86), rgb(74 52 94 / .4) 55%, rgb(77 120 138 / .12));
+}
+.site-iridescent .hero .eyebrow { color: #ebdbff; }
+.site-iridescent .trust {
+  background: linear-gradient(100deg, #f5eaff, #eaf7fa 45%, #fff0f5);
+  border-bottom: 1px solid #e5ddf1;
+}
+.site-iridescent .trust div { border-right-color: #e5ddf1; }
+.site-iridescent .trust i { color: #77658d; }
+.site-iridescent .perfume-categories {
+  background-image: linear-gradient(120deg, rgb(255 250 255 / .88), rgb(246 250 255 / .88) 60%, rgb(255 250 245 / .88)), url("images/backgrounds/perfume-botanicals.png");
+  background-size: auto, 240px 240px;
+  background-repeat: no-repeat, repeat;
+}
+.site-iridescent .perfume-category-panel {
+  color: #393047;
+  background: linear-gradient(135deg, #e5d7f4, #e0eff7 35%, #f4dfeb 65%, #f6ebd8);
+  background-size: 180% 180%;
+  transition: background-position .7s ease, transform .35s ease, box-shadow .35s ease;
+}
+.site-iridescent .collection-panel-image { position:absolute;inset:0;width:100%;height:100%;object-fit:cover; }
+.site-iridescent .perfume-category-panel.has-collection-image::after { content:"";position:absolute;inset:0;background:rgb(36 25 48 / .28);pointer-events:none; }
+.site-iridescent .perfume-category-panel.has-collection-image span { color:#fff;z-index:1;text-shadow:0 2px 8px rgb(0 0 0 / .35); }
+.site-iridescent .perfume-category-grid:has(> a:only-child) { grid-template-columns:1fr; }
+.site-iridescent .perfume-category-grid:has(> a:nth-child(2):last-child) { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.site-iridescent .perfume-category-panel:nth-child(2) {
+  background-image: linear-gradient(145deg, #d9eef2, #eee2fa 35%, #fbe6e8 68%, #e6eff9);
+}
+.site-iridescent .perfume-category-panel:nth-child(3) {
+  background-image: linear-gradient(135deg, #f4dfed, #f4ecda 35%, #e3e3fa 68%, #ddf0f4);
+}
+.site-iridescent .perfume-category-panel:hover,
+.site-iridescent .perfume-category-panel:focus-visible {
+  background-position: 100% 100%;
+  box-shadow: 0 18px 32px rgb(97 76 126 / .14);
+}
+.site-iridescent .section-soft {
+  background: linear-gradient(110deg, #f0eafa, #edf7fa 55%, #fcf0f4);
+}
+.site-iridescent .product-card,
+.site-iridescent .news-card {
+  border-color: #e4dcef;
+  box-shadow: 0 5px 20px rgb(78 62 108 / .04);
+}
+.site-iridescent .ad-slide,
+.site-iridescent .ad-slide:nth-child(2),
+.site-iridescent .ad-slide:nth-child(3) {
+  background: linear-gradient(115deg, #393047, #73577e 55%, #477887);
+}
+.site-iridescent .cta {
+  background: linear-gradient(115deg, #393047, #665279 50%, #476978);
+  box-shadow: 0 10px 28px rgb(78 62 108 / .12);
+}
+.site-iridescent .footer {
+  background: linear-gradient(120deg, #e5d7f4, #e0eff7, #f4dfeb);
+  color: #393047;
+}
+.site-iridescent .footer .brand.arome-logo {
+  background: transparent;
+}
+.site-iridescent .footer a, .site-iridescent .footer-bottom { color: #393047; }
+@media(prefers-reduced-motion:reduce) {
+  .site-iridescent .perfume-category-panel { transition: none; }
+}
+
+/* Soft pearl surfaces with dark violet text keep every page readable. */
+.site-iridescent .section-head h2 {
+  font-size: clamp(25px, 2.8vw, 36px);
+  font-weight: 600;
+  line-height: 1.3;
+}
+.site-iridescent .section-head .eyebrow {
+  font-size: 11px;
+  letter-spacing: 2.8px;
+  margin-bottom: 8px;
+}
+.site-iridescent .section-head .collection-view-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #393047;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+  cursor: pointer;
+  transition: color .18s ease, text-decoration-thickness .18s ease;
+}
+.site-iridescent .section-head .collection-view-link:hover {
+  color: #73577e;
+  text-decoration-thickness: 2px;
+}
+.site-iridescent .section-head .collection-view-link:focus-visible {
+  outline: 2px solid #73577e;
+  outline-offset: 5px;
+  border-radius: 2px;
+}
+@media(prefers-reduced-motion:reduce) {
+  .site-iridescent .section-head .collection-view-link { transition: none; }
+}
+.site-iridescent main > .perfume-categories .section-head,
+.site-iridescent main > .section-soft .section-head,
+.site-iridescent main > .section.container .section-head {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+  gap: 12px;
+}
+.site-iridescent main > .perfume-categories .section-head > a,
+.site-iridescent main > .section-soft .section-head > a,
+.site-iridescent main > .section.container .section-head > a {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  justify-self: end;
+}
+@media(max-width:700px) {
+  .site-iridescent main > .perfume-categories .section-head > a,
+  .site-iridescent main > .section-soft .section-head > a,
+  .site-iridescent main > .section.container .section-head > a {
+    position: static;
+    transform: none;
+    justify-self: end;
+  }
+}
+.site-iridescent main {
+  background: linear-gradient(125deg, #fffaff, #f3f8fd 55%, #fff6fa);
+}
+.site-iridescent .page-hero,
+.site-iridescent .cart-order-summary,
+.site-iridescent .verified-phone,
+.site-iridescent .auth-local-note {
+  background: linear-gradient(125deg, #eee2fa, #e8f3fa 55%, #fae8ee);
+}
+.site-iridescent .simple-auth {
+  background: transparent;
+}
+.site-iridescent .form-card,
+.site-iridescent .summary-card,
+.site-iridescent .filter-panel,
+.site-iridescent .cart-drawer,
+.site-iridescent .header-account-popover,
+.site-iridescent .toast-notice {
+  background: linear-gradient(145deg, #ffffff 65%, #f4edfb 100%);
+  border-color: #e4dcef;
+}
+.site-iridescent .cart-ui-button,
+.site-iridescent .auth-submit,
+.site-iridescent .header-login-button,
+.site-iridescent .btn-dark,
+.site-iridescent .shop-filter-actions button {
+  background: linear-gradient(115deg, #393047, #665279);
+  color: #fff;
+}
+.site-iridescent .cart-ui-button-outline { background: transparent; color: #393047; }
+.site-iridescent .about-story-box,
+.site-iridescent .about-bottom { background: linear-gradient(120deg, #393047, #665279, #476978); }
+.site-iridescent .about-quote { background: linear-gradient(120deg, #eee2fa, #e8f3fa, #fae8ee); }
+.site-iridescent .about-bottom :is(.about-section-label,p) { color: #f0eafa; }
+.site-iridescent .about-overlay { background: linear-gradient(90deg, rgb(36 25 48 / .8), rgb(74 52 94 / .3)); }
+
+/* Administrator uses the same pearl palette as the storefront. */
+.site-iridescent.admin-workspace .erp-shell,
+.site-iridescent.admin-workspace .erp-main {
+  background: linear-gradient(125deg, #faf6ff, #f0f7fc 55%, #fff5fa);
+}
+.site-iridescent.admin-workspace .erp-side {
+  background: linear-gradient(160deg, #e5d7f4, #e0eff7 50%, #f4dfeb);
+  border-right: 1px solid #ded5e9;
+  scrollbar-color: #a498b8 transparent;
+}
+.site-iridescent.admin-workspace .erp-side :is(a, button, small, h2, strong, .erp-icon),
+.site-iridescent.admin-workspace .erp-side .erp-grouped-nav a,
+.site-iridescent.admin-workspace .erp-side .erp-grouped-nav a .erp-icon,
+.site-iridescent.admin-workspace .erp-side .erp-nav-section h2,
+.site-iridescent.admin-workspace .erp-side .erp-grouped-nav .erp-open-store {
+  color: #393047;
+}
+.site-iridescent.admin-workspace .erp-side .erp-grouped-nav a:hover {
+  background: rgb(255 255 255 / .55);
+}
+.site-iridescent.admin-workspace .erp-side .erp-grouped-nav a.active {
+  background: #393047;
+  color: #fff;
+}
+.site-iridescent.admin-workspace .erp-side .erp-grouped-nav a.active .erp-icon { color: #fff; }
+.site-iridescent.admin-workspace .erp-side :focus-visible { outline-color: #393047; }
+.site-iridescent.admin-workspace .erp-top,
+.site-iridescent.admin-workspace .erp-welcome {
+  background: linear-gradient(110deg, #f0eafa, #edf7fa 55%, #fcf0f4);
+}
+.site-iridescent.admin-workspace .erp-card,
+.site-iridescent.admin-workspace .erp-kpis article,
+.site-iridescent.admin-workspace .erp-module-grid > a {
+  background: #fff;
+  border-color: #e4dcef;
+  box-shadow: 0 5px 20px rgb(78 62 108 / .04);
+}
+.site-iridescent.admin-workspace .erp-btn,
+.site-iridescent.admin-workspace .erp-inline button {
+  background: linear-gradient(115deg, #393047, #665279);
+}
+.site-iridescent.admin-workspace .erp-menu-toggle {
+  background: #fff;
+  color: #393047;
+  border-color: #cfc2df;
+}
+.site-iridescent.admin-workspace .erp-brand-logo { display: block; width: 150px; flex-shrink: 0; }
+.site-iridescent.admin-workspace .erp-brand-logo img { display: block; width: 100%; height: 92px; object-fit: contain; }
+.site-iridescent .footer a:hover { color: #393047; }
+.site-iridescent .footer-bottom { border-top-color: rgb(57 48 71 / .15); }

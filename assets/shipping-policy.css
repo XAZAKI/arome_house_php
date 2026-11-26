@@ -1,0 +1,12 @@
+.site-iridescent main:has(.shipping-policy){background:#fff}
+.shipping-policy{max-width:900px;padding:38px 28px 64px;margin:auto;color:var(--theme-ink)}
+.shipping-policy h1{text-align:center;margin:0 0 34px;font-size:clamp(28px,3vw,38px);font-weight:500;line-height:1.3}
+.shipping-policy-content{max-width:720px;margin:auto}
+.shipping-policy-intro{font-size:13px;line-height:1.8;margin:0 0 24px;color:#746582}
+.shipping-policy ol{padding:0;list-style:none;counter-reset:shipping-section;margin:0}
+.shipping-policy li{counter-increment:shipping-section;margin-bottom:22px}
+.shipping-policy h2{font-size:14px;line-height:1.5;font-weight:600;margin:0 0 10px}
+.shipping-policy h2::before{content:counter(shipping-section) ". ";}
+.shipping-policy p{font-size:13px;line-height:1.85;margin:0 0 9px}
+.site-iridescent .shipping-policy a{font-weight:500;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:600px){.shipping-policy{padding:30px 6% 45px}.shipping-policy h1{margin-bottom:26px}}

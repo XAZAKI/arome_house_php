@@ -1,0 +1,7 @@
+<?php $rows=[];$r=db()->query('SELECT name,content,rating,created_at FROM testimonials WHERE is_visible=1 ORDER BY id DESC');while($r&&$x=$r->fetch_assoc())$rows[]=$x; ?>
+<section class="page-hero"><div class="container"><p class="eyebrow">CUSTOMER STORIES</p><h1>Testimoni Pelanggan</h1><p>Pengalaman nyata pelanggan ARÔME HOUSE.</p></div></section>
+<section class="section container"><div class="product-grid">
+<?php foreach($rows as $item): ?><article class="form-card"><strong><?= e(str_repeat('★',(int)$item['rating'])) ?></strong><p>“<?= e($item['content']) ?>”</p><b><?= e($item['name']) ?></b><small><?= e(date('d M Y',strtotime($item['created_at']))) ?></small></article><?php endforeach; ?>
+<?php if(!$rows): ?><div class="empty-state"><h2>Belum ada testimoni</h2><p>Jadilah pelanggan pertama yang membagikan pengalaman Anda.</p></div><?php endif; ?></div>
+<?php if(is_logged_in()&&!is_admin()): ?><section class="form-card" style="margin-top:2rem"><h2>Kirim testimoni</h2><form method="post"><input type="hidden" name="action" value="testimonial_send"><input type="hidden" name="csrf" value="<?= e(compliance_csrf()) ?>"><label>Rating<select name="rating"><?php for($i=5;$i>=1;$i--): ?><option value="<?= $i ?>"><?= $i ?> bintang</option><?php endfor; ?></select></label><label>Testimoni<textarea name="content" maxlength="2000" required></textarea></label><button class="btn btn-dark">Kirim untuk ditinjau</button></form></section><?php endif; ?>
+</section>

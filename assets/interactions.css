@@ -1,0 +1,98 @@
+/* Consistent click cues for text, controls, and linked cards. */
+.site-iridescent a[href] { cursor: pointer; }
+.site-iridescent a[href] { text-decoration: none; }
+.site-iridescent a[href]:is(
+  .collection-view-link, .home-products-view, .forgot-link,
+  .auth-account-link a, .header-account-popover p a,
+  .auth-terms a, .auth-local-note a, .cart-continue,
+  .notification-view-all, .shop-filter-actions a,
+  .erp-actions a, .erp-card-head > a
+) {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  text-decoration-color: currentColor;
+}
+.site-iridescent .product-card {
+  background: #fff;
+  border: 1px solid #e4dcef;
+  border-radius: 8px;
+  box-shadow: none;
+  transition: border-color .2s ease;
+}
+.site-iridescent .product-card:hover {
+  border-color: #b8a8cd;
+  box-shadow: none;
+}
+.site-iridescent .product-card h3 a,
+.site-iridescent .shop-product h2 a,
+.site-iridescent .cart-ui-name {
+  text-decoration: none;
+}
+.site-iridescent .product-card h3 a:hover,
+.site-iridescent .shop-product h2 a:hover,
+.site-iridescent .cart-ui-name:hover { color: #73577e; text-decoration: none; }
+.site-iridescent .shop-product {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.site-iridescent .shop-product:hover { box-shadow: none; }
+.site-iridescent main:has(.shop-catalog) { background: #fff; }
+.site-iridescent .shop-catalog {
+  max-width: 1680px;
+  padding-top: 44px;
+  --shop-muted: #867b91;
+}
+.site-iridescent .shop-product-info { padding: 15px 0 0; }
+.site-iridescent .shop-product h2 { font-size: 16px; line-height: 1.6; font-weight: 500; }
+.site-iridescent .shop-product-price strong { font-size: 22px; }
+.site-iridescent .shop-filter-label { display: inline-flex; align-items: center; gap: 7px; }
+.site-iridescent .shop-sidebar legend { font-size: 25px; }
+@media(min-width:1101px) {
+  .site-iridescent .shop-toolbar, .site-iridescent .shop-layout {
+    grid-template-columns: minmax(230px, .95fr) minmax(0, 3.05fr);
+    gap: 36px;
+  }
+  .site-iridescent .shop-filter-disclosure > summary { display: none; }
+  .site-iridescent .shop-product-grid { gap: 38px 34px; }
+}
+.site-iridescent a[href]:hover { text-decoration-thickness: 2px; }
+.site-iridescent :is(a[href], button, summary):focus-visible {
+  outline: 2px solid var(--theme-ink);
+  outline-offset: 4px;
+}
+.site-iridescent :is(.btn, .erp-btn, .auth-submit, .cart-ui-button, .header-login-button, .about-button) {
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.site-iridescent :is(.btn, .erp-btn, .auth-submit, .cart-ui-button, .header-login-button, .about-button):hover {
+  box-shadow: 0 5px 15px rgb(var(--theme-ink-rgb) / .18);
+}
+.site-iridescent :is(.btn, .erp-btn, .auth-submit, .cart-ui-button, .header-login-button, .about-button):active {
+  transform: translateY(1px);
+}
+.site-iridescent :is(.main-nav a, .account-menu a, .auth-methods a):hover {
+  color: #73577e;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.site-iridescent .nav-actions > a:hover,
+.site-iridescent .header-account-trigger:hover {
+  background: rgb(var(--theme-ink-rgb) / .07);
+  border-radius: 6px;
+}
+.site-iridescent .erp-module-grid > a:hover {
+  border-color: #a498b8;
+  box-shadow: 0 6px 18px rgb(var(--theme-ink-rgb) / .12);
+}
+.site-iridescent .perfume-category-panel:hover span,
+.site-iridescent .perfume-category-panel:focus-visible span {
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  text-decoration-thickness: 2px;
+}
+@media(prefers-reduced-motion:reduce) {
+  .site-iridescent :is(.btn, .erp-btn, .auth-submit, .cart-ui-button, .header-login-button, .about-button) { transition: none; }
+}

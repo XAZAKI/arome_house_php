@@ -1,0 +1,42 @@
+<?php
+$segments=[''=>'Semua pelanggan','prospect'=>'Belum bertransaksi','new'=>'Pembeli baru','loyal'=>'Langganan','inactive'=>'Tidak aktif'];
+$search=is_string($_GET['q']??null)?trim($_GET['q']):'';
+$segment=is_string($_GET['segment']??null)&&isset($segments[$_GET['segment']])?$_GET['segment']:'';
+$due=($_GET['due']??'')==='1';$pageNumber=max(1,(int)($_GET['p']??1));$base=crm_customer_sql();
+$summary=db()->query("SELECT COUNT(*) customers,COALESCE(SUM(spent),0) spent,SUM(segment='loyal') loyal,SUM(follow_up_date<=CURDATE()) due FROM ($base) customers")->fetch_assoc();
+$conditions=['1=1'];$params=[];$types='';
+if($search!==''){$conditions[]="(name LIKE ? ESCAPE '!' OR email LIKE ? ESCAPE '!' OR phone LIKE ? ESCAPE '!')";$like='%'.str_replace(['!','%','_'],['!!','!%','!_'],$search).'%';$params=[$like,$like,$like];$types='sss';}
+if($segment!==''){$conditions[]='segment=?';$params[]=$segment;$types.='s';}
+if($due)$conditions[]='follow_up_date<=CURDATE()';
+$filtered="FROM ($base) customers WHERE ".implode(' AND ',$conditions);
+$st=db()->prepare("SELECT COUNT(*) total $filtered");if($params)$st->bind_param($types,...$params);$st->execute();$total=(int)$st->get_result()->fetch_assoc()['total'];$st->close();
+$pages=max(1,(int)ceil($total/25));$pageNumber=min($pageNumber,$pages);$offset=($pageNumber-1)*25;
+$st=db()->prepare("SELECT * $filtered ORDER BY (follow_up_date<=CURDATE()) DESC,spent DESC,id DESC LIMIT 25 OFFSET $offset");if($params)$st->bind_param($types,...$params);$st->execute();$rows=$st->get_result()->fetch_all(MYSQLI_ASSOC);$st->close();
+$editId=max(0,(int)($_GET['edit']??0));$editCustomer=null;$history=[];
+if($editId){$st=db()->prepare("SELECT * FROM ($base) customers WHERE id=?");$st->bind_param('i',$editId);$st->execute();$editCustomer=$st->get_result()->fetch_assoc();$st->close();
+if($editCustomer){$st=db()->prepare('SELECT o.*,('.crm_valid_order_sql().') counted FROM orders o WHERE user_id=? ORDER BY created_at DESC,id DESC LIMIT 50');$st->bind_param('i',$editId);$st->execute();$history=$st->get_result()->fetch_all(MYSQLI_ASSOC);$st->close();}}
+$listUrl='?'.http_build_query(['page'=>'admin','tab'=>'customers','q'=>$search,'segment'=>$segment,'due'=>$due?'1':'0']);
+?>
+<section class="erp-card"><div class="erp-card-head"><div><h2>CRM Pelanggan</h2><p>Kenali pembeli dan rencanakan tindak lanjut untuk mendorong pembelian ulang.</p></div></div>
+<div class="crm-summary"><div><small>Total pelanggan</small><strong><?= (int)$summary['customers'] ?></strong></div><div><small>Belanja terhitung</small><strong><?= rupiah($summary['spent']) ?></strong></div><div><small>Langganan aktif</small><strong><?= (int)$summary['loyal'] ?></strong></div><div><small>Tindak lanjut jatuh tempo</small><strong><a href="?page=admin&amp;tab=customers&amp;due=1"><?= (int)$summary['due'] ?></a></strong></div></div>
+<p class="crm-help">Belanja mencakup pesanan yang dibayar atau pesanan manual berstatus Selesai; pembatalan dan pengembalian dana dikecualikan. Nilai mencakup ongkir. Langganan: minimal 3 transaksi terhitung. Tidak aktif: transaksi terakhir lebih dari 90 hari lalu.</p></section>
+<?php if($editId&&!$editCustomer): ?><section class="erp-card"><p>Pelanggan tidak ditemukan.</p></section><?php endif; ?>
+<?php if($editCustomer): $u=$editCustomer; ?>
+<section class="erp-card"><div class="erp-card-head"><div><h2><?= e($u['name']) ?></h2><p><?= e($segments[$u['segment']]) ?> · <?= (int)$u['orders'] ?> transaksi · <?= rupiah($u['spent']) ?></p></div><a href="<?= e($listUrl) ?>">Tutup detail</a></div>
+<form method="post" class="erp-form"><input type="hidden" name="action" value="admin_crm_save"><input type="hidden" name="customer_id" value="<?= $editId ?>"><input type="hidden" name="csrf" value="<?= e(admin_management_csrf()) ?>">
+<div class="erp-form-row"><label>Nama lengkap<input name="name" maxlength="100" required value="<?= e($u['name']) ?>"></label><label>Email<input name="email" type="email" maxlength="150" value="<?= e($u['email']) ?>"></label><label>Nomor WhatsApp<input name="phone" type="tel" maxlength="30" value="<?= e($u['phone']) ?>"></label></div>
+<label>Catatan pelanggan<textarea name="notes" rows="4" maxlength="5000" placeholder="Preferensi aroma, kebutuhan, atau keluhan pelanggan"><?= e($u['notes']) ?></textarea></label>
+<div class="erp-form-row"><label>Tugas tindak lanjut<input name="follow_up_task" maxlength="255" placeholder="Contoh: tanyakan kepuasan setelah pembelian" value="<?= e($u['follow_up_task']) ?>"></label><label>Tanggal pengingat<input name="follow_up_date" type="date" value="<?= e($u['follow_up_date']) ?>"></label></div><small>Kosongkan tanggal setelah tindak lanjut selesai. Pengingat tampil di CRM; hubungi pelanggan sesuai kebutuhan dan persetujuannya.</small>
+<div class="management-row-actions"><button class="erp-btn">Simpan pelanggan</button><?php if($wa=crm_whatsapp_url($u['phone'])): ?><a href="<?= e($wa) ?>" target="_blank" rel="noopener noreferrer">Buka WhatsApp</a><?php endif; ?></div></form>
+<h3 class="crm-help">Riwayat transaksi</h3><p class="crm-help">Menampilkan maksimal 50 pesanan terbaru dari semua status.</p>
+<div class="erp-table-wrap"><table><thead><tr><th>Pesanan</th><th>Tanggal</th><th>Status</th><th>Pembayaran</th><th>Total</th><th>Belanja terhitung</th></tr></thead><tbody>
+<?php if(!$history): ?><tr><td colspan="6">Belum ada transaksi.</td></tr><?php endif; ?>
+<?php foreach($history as $o): ?><tr><td><?= e($o['order_code']) ?></td><td><?= e(date('d M Y',strtotime($o['created_at']))) ?></td><td><?= e($o['status']) ?></td><td><?= e($o['payment_method']) ?><small><?= e(['manual'=>'Manual — periksa status pesanan','paid'=>'Lunas','pending'=>'Menunggu pembayaran','refunded'=>'Dana dikembalikan','expired'=>'Kedaluwarsa','failed'=>'Gagal'][$o['payment_status']]??$o['payment_status']) ?></small></td><td><?= rupiah($o['total']) ?></td><td><?= $o['counted']?'Ya':'Tidak' ?></td></tr><?php endforeach; ?>
+</tbody></table></div></section>
+<?php endif; ?>
+<section class="erp-card"><div class="erp-card-head"><div><h2>Daftar pelanggan</h2><p><?= $total ?> pelanggan sesuai filter.</p></div></div>
+<form method="get" class="erp-form crm-filters"><input type="hidden" name="page" value="admin"><input type="hidden" name="tab" value="customers"><label>Cari pelanggan<input name="q" type="search" maxlength="150" placeholder="Nama, email, atau nomor WhatsApp" value="<?= e($search) ?>"></label><label>Segmen<select name="segment"><?php foreach($segments as $key=>$label): ?><option value="<?= e($key) ?>" <?= $key===$segment?'selected':'' ?>><?= e($label) ?></option><?php endforeach; ?></select></label><label class="management-check"><input name="due" type="checkbox" value="1" <?= $due?'checked':'' ?>> Tindak lanjut jatuh tempo</label><button class="erp-btn">Terapkan</button><a href="?page=admin&amp;tab=customers">Reset filter</a></form>
+<div class="erp-table-wrap"><table><thead><tr><th>Pelanggan</th><th>Kontak</th><th>Segmen</th><th>Transaksi</th><th>Total belanja</th><th>Pembelian terakhir</th><th>Tindak lanjut</th><th>Aksi</th></tr></thead><tbody>
+<?php if(!$rows): ?><tr><td colspan="8">Tidak ada pelanggan sesuai filter ini.</td></tr><?php endif; ?>
+<?php foreach($rows as $u): ?><tr><td><b><?= e($u['name']) ?></b><small>Sejak <?= e(date('d M Y',strtotime($u['created_at']))) ?></small></td><td><?= e($u['email']?:'—') ?><small><?= e($u['phone']?:'—') ?></small></td><td><span class="crm-segment"><?= e($segments[$u['segment']]) ?></span></td><td><?= (int)$u['orders'] ?></td><td><?= rupiah($u['spent']) ?></td><td><?= $u['last_purchase']?e(date('d M Y',strtotime($u['last_purchase']))):'—' ?></td><td><?= $u['follow_up_date']?e(date('d M Y',strtotime($u['follow_up_date']))):'—' ?><small><?= e($u['follow_up_task']) ?></small></td><td><div class="management-row-actions"><a href="<?= e($listUrl.'&p='.$pageNumber.'&edit='.$u['id']) ?>">Detail &amp; edit</a><?php if($wa=crm_whatsapp_url($u['phone'])): ?><a href="<?= e($wa) ?>" target="_blank" rel="noopener noreferrer">WhatsApp</a><?php endif; ?></div></td></tr><?php endforeach; ?>
+</tbody></table></div><nav class="management-row-actions crm-help" aria-label="Halaman pelanggan"><?php if($pageNumber>1): ?><a href="<?= e($listUrl.'&p='.($pageNumber-1)) ?>">Sebelumnya</a><?php endif; ?><span>Halaman <?= $pageNumber ?> dari <?= $pages ?></span><?php if($pageNumber<$pages): ?><a href="<?= e($listUrl.'&p='.($pageNumber+1)) ?>">Berikutnya</a><?php endif; ?></nav></section>

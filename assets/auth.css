@@ -1,0 +1,36 @@
+.simple-auth{color:var(--theme-ink);background:var(--theme-white);padding:60px 5%;min-height:560px}.simple-auth h1,.simple-auth h2{font-weight:500;line-height:1.25;margin:0 0 20px}.simple-auth h1{font-size:34px}.simple-auth h2{font-size:32px}.simple-auth p{font-size:16px;line-height:1.8;margin:0 0 30px}.login-auth{max-width:500px;margin:0 auto;padding:40px 30px 48px;min-height:460px}.login-auth h1{text-align:center;font-size:36px;margin-bottom:32px}.simple-auth-form{display:flex;flex-direction:column;gap:26px;margin-top:30px}.login-auth .simple-auth-form{gap:22px;margin-top:0}.auth-field{display:block;position:relative}.auth-field input,.auth-field select{width:100%;height:56px;border:1px solid rgb(var(--theme-ink-rgb)/.2);border-radius:7px;background:var(--theme-white);color:var(--theme-ink);padding:0 18px;font-size:16px;outline-offset:3px}.login-auth .auth-field input{height:50px;font-size:15px}.auth-field input::placeholder{color:rgb(var(--theme-ink-rgb)/.55)}.password-field input{padding-right:54px}.password-toggle{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:rgb(var(--theme-ink-rgb)/.6);width:40px;height:40px;font-size:20px;display:grid;place-items:center}.auth-submit{display:inline-flex;align-items:center;justify-content:center;border:0;background:var(--theme-ink);color:var(--theme-white);padding:17px 28px;min-height:54px;font-weight:600;font-size:16px;border-radius:0;cursor:pointer}.login-auth .auth-submit{height:50px;min-height:50px;padding:12px 20px;font-size:16px;letter-spacing:.7px}.auth-submit-small{align-self:flex-start;width:auto}.auth-account-link{text-align:center;margin-top:24px!important;font-size:15px!important}.auth-account-link a{font-weight:700}.forgot-link{align-self:flex-end;text-decoration:underline;font-weight:600;font-size:13px}.split-auth{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:9%;padding:60px max(4%,calc((100vw - 1400px)/2))}.auth-invite{align-self:center}.verified-phone{padding:18px;background:var(--theme-surface);border-radius:8px;margin:28px 0}.auth-text-button{border:0;background:transparent;color:var(--theme-ink);padding:8px 0;text-decoration:underline}.auth-name-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}.auth-terms{display:flex;align-items:center;gap:8px;font-size:14px;flex-wrap:wrap}.auth-terms input{width:18px;height:18px;accent-color:var(--theme-ink)}.auth-terms a{text-decoration:underline}.auth-terms-details{font-size:13px}.auth-methods{display:flex;border-bottom:1px solid var(--theme-surface);gap:10px;margin:35px 0 20px}.auth-methods a{padding:14px 18px;border-bottom:2px solid transparent}.auth-methods a.active{border-color:var(--theme-ink);font-weight:600}.auth-local-note{background:var(--theme-surface);padding:14px;border-radius:6px;font-size:13px!important;margin-top:20px!important}.auth-local-note a{text-decoration:underline}.auth-sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.simple-auth :is(input,button,a,select):focus-visible{outline:2px solid var(--theme-ink);outline-offset:3px}body:has(.simple-auth){background:var(--theme-white)}
+.toast-notice{position:fixed;top:84px;right:24px;z-index:100;display:flex;align-items:center;gap:10px;width:min(340px,calc(100% - 32px));padding:12px 14px;background:var(--theme-white);color:var(--theme-ink);box-shadow:0 8px 28px rgb(var(--theme-ink-rgb)/.16);border-radius:8px;overflow:hidden;animation:toast-enter .3s ease both}.toast-symbol{width:24px;height:24px;flex-shrink:0;display:grid;place-items:center;border-radius:50%;background:var(--theme-ink);color:var(--theme-white);font-size:14px}.toast-message{flex:1;min-width:0;font-size:12px;line-height:1.6;overflow-wrap:anywhere}.toast-close{position:static;flex-shrink:0;display:grid;place-items:center;width:24px;height:24px;padding:0;border:0;border-radius:5px;background:transparent;color:var(--theme-ink);font-size:19px;line-height:1;cursor:pointer}.toast-close:hover{background:rgb(var(--theme-ink-rgb)/.08)}.toast-close:focus-visible{outline:2px solid var(--theme-ink);outline-offset:2px}.toast-notice::after{content:"";position:absolute;bottom:0;left:0;height:2px;background:var(--theme-ink);width:100%;transform-origin:left;animation:toast-progress 7s linear forwards}.toast-notice.is-closing{animation:toast-exit .25s ease forwards}@keyframes toast-enter{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}@keyframes toast-exit{to{opacity:0;transform:translateX(30px)}}@keyframes toast-progress{to{transform:scaleX(0)}}@media(max-width:700px){.split-auth{grid-template-columns:1fr;gap:50px;padding:35px 6%}.login-auth{padding:32px 6%}.login-auth h1{font-size:32px;margin-bottom:28px}.login-auth .auth-field input{height:48px;font-size:14px}.auth-name-row{grid-template-columns:1fr}.simple-auth h2{font-size:26px}.toast-notice{right:16px;top:72px}}@media(prefers-reduced-motion:reduce){.toast-notice,.toast-notice::after,.toast-notice.is-closing{animation:none}}
+.login-auth .auth-submit, .header-login-button {
+  position: relative;
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.login-auth .auth-submit::after, .header-login-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 25%, rgb(var(--theme-white-rgb) / .18) 50%, transparent 75%);
+  transform: translateX(-120%);
+  transition: transform .55s ease;
+  pointer-events: none;
+}
+.login-auth .auth-submit:hover, .header-login-button:hover,
+.login-auth .auth-submit:focus-visible, .header-login-button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgb(var(--theme-ink-rgb) / .2);
+}
+.login-auth .auth-submit:hover::after, .header-login-button:hover::after,
+.login-auth .auth-submit:focus-visible::after, .header-login-button:focus-visible::after {
+  transform: translateX(120%);
+}
+.login-auth .auth-submit:active, .header-login-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+@media(prefers-reduced-motion:reduce) {
+  .login-auth .auth-submit, .header-login-button,
+  .login-auth .auth-submit::after, .header-login-button::after { transition: none; }
+  .login-auth .auth-submit:hover, .header-login-button:hover,
+  .login-auth .auth-submit:focus-visible, .header-login-button:focus-visible { transform: none; }
+  .login-auth .auth-submit::after, .header-login-button::after { display: none; }
+}

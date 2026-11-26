@@ -1,0 +1,8 @@
+/config/midtrans.local.php
+/config/whatsapp.local.php
+/.mobile-audit/
+
+/config/email.local.php
+/config/db.local.php
+
+.vercel

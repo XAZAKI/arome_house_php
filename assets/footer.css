@@ -1,0 +1,29 @@
+.site-iridescent .footer{background:linear-gradient(120deg,#e5d7f4,#e0eff7 50%,#f4dfeb);color:#393047;padding:38px 0 0}
+.footer-reference-grid{width:min(1280px,92%);margin:auto;display:grid;grid-template-columns:minmax(0,1fr) 190px 220px;gap:40px;padding-bottom:28px}
+.site-iridescent .footer .brand.arome-logo{width:126px;min-width:126px;height:82px;background:transparent;margin:0 0 18px}
+.site-iridescent .footer .brand.arome-logo img{filter:none}
+.site-iridescent .footer .footer-contact-line{display:flex;align-items:center;gap:12px;margin:10px 0;color:#554a64;font-size:14px;overflow-wrap:anywhere}
+.footer-contact-line i{font-size:20px;color:#393047;flex-shrink:0}
+.footer-link-column{padding-top:16px}
+.footer-link-column h2{font-size:16px;font-weight:600;margin:0 0 16px;color:#393047}
+.site-iridescent .footer .footer-link-column a{display:block;width:fit-content;color:#554a64;font-size:13px;line-height:1.6;margin:0 0 10px;text-decoration:none}
+.site-iridescent .footer a:hover{color:#393047;text-decoration:underline;text-underline-offset:4px}
+.footer-newsletter{margin-top:22px;max-width:285px}
+.footer-newsletter summary{list-style:none;display:flex;align-items:center;justify-content:center;background:#fff;color:#19191b;border-radius:7px;min-height:46px;padding:12px 16px;font-size:12px;font-weight:600;cursor:pointer;letter-spacing:.3px}
+.footer-newsletter summary::-webkit-details-marker{display:none}
+.footer-newsletter summary:hover{background:#f0eafa}
+.footer-newsletter form{margin-top:16px}
+.footer-newsletter label{font-size:12px;display:block;margin-bottom:8px;color:#554a64}
+.footer-newsletter form>div{display:flex;gap:8px}
+.footer-newsletter input{min-width:0;width:100%;padding:10px 12px;border:1px solid #cfc2df;background:#fff;border-radius:4px;color:#393047;font-size:13px}
+.footer-newsletter button{border:1px solid #393047;border-radius:4px;padding:10px 14px;background:#393047;color:#fff;font-size:13px}
+.footer-reference-bottom{width:min(1280px,92%);margin:auto;border-top:1px solid rgb(57 48 71 / .12);padding:14px 0;font-size:11px;color:#554a64}
+.site-iridescent .footer :is(a,button,input,summary):focus-visible{outline:2px solid #393047;outline-offset:4px}
+@media(max-width:1000px){.footer-reference-grid{grid-template-columns:minmax(0,1.2fr) 1fr 1fr;gap:30px}.footer-link-column h2{font-size:16px}.site-iridescent .footer .footer-contact-line{font-size:14px}}
+@media(max-width:700px){.site-iridescent .footer{padding-top:28px}.footer-reference-grid{grid-template-columns:1fr 1fr;gap:28px}.footer-reference-brand{grid-column:1/-1}.footer-link-column{padding-top:8px}.site-iridescent .footer .footer-link-column a{font-size:13px}.footer-newsletter{margin-top:24px}}
+.site-iridescent .footer {
+  position: relative;
+  border-top: 1px solid rgb(115 87 126 / .22);
+  box-shadow: 0 -3px 8px rgb(57 48 71 / .04),
+              0 -14px 32px -12px rgb(91 71 120 / .18);
+}
