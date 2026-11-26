@@ -2,7 +2,7 @@
 require_once __DIR__.'/mailer.php';
 
 /**
- * Konfigurasi pengiriman email (Gmail SMTP / SMTP hosting).
+ * Konfigurasi pengiriman email (Brevo API / Gmail SMTP / SMTP hosting).
  * Urutan prioritas: config/email.local.php > environment > default.
  */
 function email_otp_config(): array {
@@ -21,6 +21,7 @@ function email_otp_config(): array {
         'reply_to' => getenv('MAIL_REPLY_TO') ?: '',
         'app_url' => getenv('APP_URL') ?: '',
         'timeout' => (int)(getenv('SMTP_TIMEOUT') ?: 20),
+        'brevo_api_key' => getenv('BREVO_API_KEY') ?: '',
     ];
 
     $file = __DIR__.'/../config/email.local.php';
@@ -40,6 +41,10 @@ function auth_email_local_mode(): bool {
 
 function email_otp_ready(): bool {
     $config = email_otp_config();
+    if ($config['provider'] === 'brevo') {
+        return trim((string)$config['brevo_api_key']) !== ''
+            && trim((string)$config['from_email']) !== '';
+    }
     return !in_array($config['provider'], ['local', ''], true)
         && trim((string)$config['username']) !== ''
         && trim((string)$config['password']) !== '';
@@ -68,10 +73,53 @@ function email_otp_html(string $text): string {
         .'</div></body></html>';
 }
 
+/** Kirim email lewat Brevo API (HTTPS), dipakai saat SMTP diblokir hosting. */
+function brevo_send_mail(array $config, string $to, string $subject, string $html, string $text): void {
+    if (!function_exists('curl_init')) {
+        throw new InvalidArgumentException('Ekstensi cURL PHP perlu diaktifkan untuk mengirim email.');
+    }
+    $payload = [
+        'sender' => ['name' => (string)$config['from_name'], 'email' => (string)$config['from_email']],
+        'to' => [['email' => $to]],
+        'subject' => $subject,
+        'htmlContent' => $html,
+        'textContent' => $text,
+    ];
+    $curl = curl_init('https://api.brevo.com/v3/smtp/email');
+    curl_setopt_array($curl, [
+        CURLOPT_POST => true,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_CONNECTTIMEOUT => 10,
+        CURLOPT_TIMEOUT => 25,
+        CURLOPT_FOLLOWLOCATION => false,
+        CURLOPT_HTTPHEADER => [
+            'accept: application/json',
+            'content-type: application/json',
+            'api-key: '.trim((string)$config['brevo_api_key']),
+        ],
+        CURLOPT_POSTFIELDS => json_encode($payload),
+    ]);
+    try {
+        $body = curl_exec($curl);
+        $code = (int)curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        if ($body === false || $code < 200 || $code >= 300) {
+            error_log('Brevo gagal: HTTP '.$code.' '.(string)$body);
+            throw new InvalidArgumentException('Email belum berhasil dikirim. Periksa API key dan pengirim di Brevo.');
+        }
+    } finally {
+        curl_close($curl);
+    }
+}
+
 function email_otp_send(string $to, string $subject, string $message): void {
     email_otp_assert_ready();
     if (auth_email_local_mode()) return;
-    smtp_send_mail(email_otp_config(), $to, $subject, email_otp_html($message), $message);
+    $config = email_otp_config();
+    if ($config['provider'] === 'brevo') {
+        brevo_send_mail($config, $to, $subject, email_otp_html($message), $message);
+        return;
+    }
+    smtp_send_mail($config, $to, $subject, email_otp_html($message), $message);
 }
 
 /** Alamat email yang dinormalisasi dan divalidasi. */
